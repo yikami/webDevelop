@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input v-model="text" type="text">
   </div>
 </template>
 
@@ -10,8 +9,23 @@ import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'app',
+  data: () => {
+    return {
+      text: ""
+    };
+  },
   components: {
     HelloWorld
+  },
+  created: function() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.$http.get('/').then((res) => {
+        this.text = res.data;
+      });
+    }
   }
 };
 </script>

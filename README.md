@@ -3,7 +3,10 @@
 
 ## 预备知识
 * [markdown语法](./markdownGuide.md)
-* [esLint代码检查工具](./eslint/esLint.md)
+* [esLint代码检查工具](./eslint/eslint.md)
+* [serve静态资源服务器](https://zeit.co/blog/serve-7)
+* [es6 ( javaScripe规范 )](http://es6.ruanyifeng.com/)
+* [axios](http://www.axios-js.com/zh-cn/docs/)
 
 ## Vue
 ### 开发环境准备
@@ -27,7 +30,28 @@ vue create <项目名称>
 
 * 放置在 public 目录下或通过绝对路径被引用。这类资源将会直接被拷贝，而不会经过 webpack 的处理。
 
-### 跨域问题
-解决方式
-1. 使用nginx反向代理
-2. 在服务端响应头部加入[CORS访问控制](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
+
+### http请求
+### axios
+Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
+* 集成axios
+```
+npm install --save axios
+```
+
+#### 跨域问题
+当页面部署环境和后端部署环境不在同一个域名下式将出现跨域问题。  
+解决方式：
+* 使用nginx反向代理
+* 在服务端响应头部加入[CORS访问控制](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
+
+### 发布
+1. 运行以下指令打包
+```
+npm run build
+```
+2. 将生成的静态文件放入服务器(这里使用[serve](https://github.com/zeit/serve))
+
+### 扩展
+* [vue插件库](https://github.com/vuejs/awesome-vue#components--libraries)
+
